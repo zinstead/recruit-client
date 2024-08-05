@@ -6,7 +6,9 @@ import { getUserList } from "../../redux/actions";
 
 function Boss(props) {
   useEffect(() => {
-    props.getUserList("jobseeker");
+    if (!props.userList.length) {
+      props.getUserList("jobseeker");
+    }
   }, []);
 
   return <UserList userList={props.userList} />;

@@ -6,7 +6,9 @@ import UserList from "../../components/userList/userList";
 
 function Jobseeker(props) {
   useEffect(() => {
-    props.getUserList("boss");
+    if (!props.userList.length) {
+      props.getUserList("boss");
+    }
   }, []);
 
   return <UserList userList={props.userList} />;

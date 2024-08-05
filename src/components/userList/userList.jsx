@@ -1,21 +1,33 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Card } from "antd-mobile";
+import { FixedSizeList } from "react-window";
 
 export default function UserList(props) {
   const { userList } = props;
   const navigate = useNavigate();
 
-  return (
-    <div
-      style={{
-        marginBottom: "50px",
-        marginTop: "50px",
-      }}
-    >
-      {userList.map((user) => (
+  // 103.4 169.8
+  if (!userList.length) {
+    return null;
+  }
+  const height = window.innerHeight - 45 - 49;
+  const itemSize = (userList[0].usertype === "boss" ? 169.8 : 136.2) + 10;
+
+  const userCard = ({ index, style }) => {
+    const user = userList[index];
+
+    return (
+      <div
+        style={{
+          ...style,
+          height: { itemSize },
+          width: "330px",
+          margin: "15px",
+          boxShadow: "0 0 20px rgba(0, 0, 0, 0.1)",
+        }}
+      >
         <Card
-          className="user-card"
           onClick={() => {
             navigate(`/chat/${user._id}`);
           }}
@@ -24,9 +36,11 @@ export default function UserList(props) {
             <img
               // 如果用户没有完善信息,头像就不存在!
               src={
-                user.avatar
-                  ? require(`../../assets/images/${user.avatar}.png`)
-                  : null
+                user.avatar ? (
+                  require(`../../assets/images/${user.avatar}.png`)
+                ) : (
+                  <img src="" alt="" />
+                )
               }
               alt=""
             />
@@ -34,11 +48,23 @@ export default function UserList(props) {
           extra={user.username}
         >
           <div>职位: {user.position}</div>
-          {user.company ? <div>公司: {user.company}</div> : null}
-          {user.salary ? <div>月薪: {user.salary}</div> : null}
+          {user.usertype === "boss" ? <div>公司: {user.company}</div> : null}
+          {user.usertype === "boss" ? <div>月薪: {user.salary}</div> : null}
           <div>描述: {user.info}</div>
         </Card>
-      ))}
+      </div>
+    );
+  };
+
+  return (
+    <div className="main-center">
+      <FixedSizeList
+        itemCount={userList.length}
+        itemSize={itemSize}
+        height={height}
+      >
+        {userCard}
+      </FixedSizeList>
     </div>
   );
 }

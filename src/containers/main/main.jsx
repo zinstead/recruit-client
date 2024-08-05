@@ -86,7 +86,7 @@ function Main(props) {
   return (
     <div>
       {currComponent ? (
-        <NavBar backIcon={null} className="main-nav">
+        <NavBar backIcon={null} className="main-header">
           {currComponent.title}
         </NavBar>
       ) : null}

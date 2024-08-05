@@ -39,7 +39,7 @@ function Message(props) {
   const lastMsgs = getLastMsgs(chatMsgs, user._id);
 
   return (
-    <List style={{ marginTop: "45px", marginBottom: "50px" }}>
+    <List style={{ marginTop: "45px", marginBottom: "49px" }}>
       {lastMsgs.map((msg) => {
         const targetId = msg.to === user._id ? msg.from : msg.to;
         const targetUser = users[targetId];

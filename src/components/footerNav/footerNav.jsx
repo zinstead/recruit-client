@@ -14,7 +14,7 @@ export default function FooterNav(props) {
       onChange={(key) => {
         navigate(key);
       }}
-    >
+      className="main-footer">
       {componentList.map((item) => (
         <TabBar.Item
           key={item.path}
