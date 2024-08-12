@@ -59,11 +59,6 @@ body {
   align-items: center;
 }
 
-/* .user-card {
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-  margin: 10px;
-} */
-
 .adm-card-header {
   height: 77.8px;
 }
@@ -71,11 +66,6 @@ body {
 .user-avatar {
   width: 40px;
   height: 40px;
-}
-
-.chatBox {
-  line-height: 50px;
-  margin-right: 0 15px;
 }
 
 .chat-me {

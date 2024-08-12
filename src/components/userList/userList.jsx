@@ -12,7 +12,7 @@ export default function UserList(props) {
     return null;
   }
   const height = window.innerHeight - 45 - 49;
-  const itemSize = (userList[0].usertype === "boss" ? 169.8 : 136.2) + 10;
+  const itemSize = (userList[0].usertype === "boss" ? 169.8 : 135.4) + 10;
 
   const userCard = ({ index, style }) => {
     const user = userList[index];
@@ -22,12 +22,10 @@ export default function UserList(props) {
         style={{
           ...style,
           height: { itemSize },
-          width: "330px",
-          margin: "15px",
-          boxShadow: "0 0 20px rgba(0, 0, 0, 0.1)",
         }}
       >
         <Card
+          style={{ margin: "15px", boxShadow: "0 0 15px rgba(0, 0, 0, 0.1)" }}
           onClick={() => {
             navigate(`/chat/${user._id}`);
           }}

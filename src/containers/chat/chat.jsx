@@ -100,22 +100,23 @@ function Chat(props) {
         className="main-header"
         onBack={() => {
           navigate(-1);
-        }}>
+        }}
+      >
         {targetUser.username}
       </NavBar>
       <List
         style={{
           marginTop: "45px",
           marginBottom: "50px",
-        }}>
+        }}
+      >
         {msgs.map((msg) => {
           if (targetId === msg.from) {
             return (
               <List.Item
                 key={msg._id}
-                prefix={
-                  <img src={targetIcon} alt="" className="chat-avatar" />
-                }>
+                prefix={<img src={targetIcon} alt="" className="chat-avatar" />}
+              >
                 {msg.content}
               </List.Item>
             );
@@ -124,7 +125,8 @@ function Chat(props) {
               <List.Item
                 key={msg._id}
                 extra={<img src={meIcon} alt="" className="chat-avatar" />}
-                className="chat-me">
+                className="chat-me"
+              >
                 {msg.content}
               </List.Item>
             );
@@ -151,13 +153,15 @@ function Chat(props) {
               <span
                 onClick={() => {
                   setIsShow(!isShow);
-                }}>
+                }}
+              >
                 😀
               </span>
               &nbsp;&nbsp;
               <span onClick={handleSend}>发送</span>
             </span>
-          }></List.Item>
+          }
+        ></List.Item>
         <Grid columns={6} gap={6}>
           {isShow
             ? emojis.map((emoji, index) => (
@@ -166,7 +170,8 @@ function Chat(props) {
                   onClick={() => {
                     setContent(content + emoji);
                   }}
-                  className="emoji">
+                  className="emoji"
+                >
                   {emoji}
                 </Grid.Item>
               ))
